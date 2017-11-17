@@ -174,29 +174,29 @@ Player = new class {
 
       if (sound.includes("hit")) {
 
-        Momo.playSound(sound_hit, 1.0, 1.0, false);
+        Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
       }
 
       if (sound.includes("plant")) {
 
-        Momo.playSound(sound_plant, 1.0, 1.0, false);
+        Momo.playSample(sound_plant, 1.0, 1.0, false, getUniqueIdentifier());
       }
     }
 
     for (let i = 1; i < 10; ++i) {
 
-      if (Momo.isKeyPressed(Momo["KEY_" + i])) {
+      if (Momo.isKeyPressed("" + i + "")) {
 
-        Momo.playSound(sound_blip, 1.0, 1.0, false);
+        Momo.playSample(sound_blip, 1.0, 1.0, false, getUniqueIdentifier());
 
         // Switch the current item based upon which number key was pressed.
         this.item = i - 1;
       }
     }
 
-    if (Momo.isKeyPressed(Momo.KEY_Z)) {
+    if (Momo.isKeyPressed("z")) {
 
-      Momo.playSound(sound_blip, 1.0, 1.0, false);
+      Momo.playSample(sound_blip, 1.0, 1.0, false, getUniqueIdentifier());
 
       // Select the next item to the left.
 
@@ -207,9 +207,9 @@ Player = new class {
         this.item = 11;
       }
     }
-    else if (Momo.isKeyPressed(Momo.KEY_C)) {
+    else if (Momo.isKeyPressed("c")) {
 
-      Momo.playSound(sound_blip, 1.0, 1.0, false);
+      Momo.playSample(sound_blip, 1.0, 1.0, false, getUniqueIdentifier());
 
       // Select the next item to the right.
 
@@ -223,7 +223,7 @@ Player = new class {
 
     if (!this.moving) {
 
-      if (Momo.isKeyPressed(Momo.KEY_X)) {
+      if (Momo.isKeyPressed("x")) {
 
         let tile_facing_x = tile_x;
         let tile_facing_y = tile_y;
@@ -267,7 +267,7 @@ Player = new class {
         this.useItem();
       }
 
-      if (Momo.isKeyDown(Momo.KEY_UP)) {
+      if (Momo.isKeyDown("up")) {
 
         if (this.facing != UP) {
 
@@ -290,7 +290,7 @@ Player = new class {
           this.move[UP] = true;
         }
       }
-      else if (Momo.isKeyDown(Momo.KEY_DOWN)) {
+      else if (Momo.isKeyDown("down")) {
 
         if (this.facing != DOWN) {
 
@@ -313,7 +313,7 @@ Player = new class {
           this.move[DOWN] = true;
         }
       }
-      else if (Momo.isKeyDown(Momo.KEY_LEFT)) {
+      else if (Momo.isKeyDown("left")) {
 
         if (this.facing != LEFT) {
 
@@ -336,7 +336,7 @@ Player = new class {
           this.move[LEFT] = true;
         }
       }
-      else if (Momo.isKeyDown(Momo.KEY_RIGHT)) {
+      else if (Momo.isKeyDown("right")) {
 
         if (this.facing != RIGHT) {
 
@@ -477,7 +477,7 @@ Player = new class {
 
   render() {
 
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -554,7 +554,7 @@ Player = new class {
 
           this.addToInventory("02x01", 1);
 
-          Momo.playSound(sound_hit, 1.0, 1.0, false);
+          Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
         }
 
         // Convert mushrooms to grass.
@@ -562,7 +562,7 @@ Player = new class {
 
           this.addToInventory("07x00", 1);
 
-          Momo.playSound(sound_hit, 1.0, 1.0, false);
+          Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
         }
 
         // Convert flowers to grass.
@@ -570,7 +570,7 @@ Player = new class {
 
           this.addToInventory("01x01", 1);
 
-          Momo.playSound(sound_hit, 1.0, 1.0, false);
+          Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
         }
 
         // Convert dead trees to grass.
@@ -581,21 +581,21 @@ Player = new class {
             // Add an acorn to the inventory.
             this.addToInventory("02x01", 1);
 
-            Momo.playSound(sound_hit, 1.0, 1.0, false);
+            Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
           }
           else {
 
             // Add a stick to the inventory.
             this.addToInventory("03x01", 1);
 
-            Momo.playSound(sound_hit, 1.0, 1.0, false);
+            Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
           }
         }
 
         // Convert healthy trees to dead trees.
         if (Map.convertTile(tile_x, tile_y, "05x00t", "06x00t")) {
 
-          Momo.playSound(sound_hit, 1.0, 1.0, false);
+          Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
         }
 
         // Convert bones to grass.
@@ -603,7 +603,7 @@ Player = new class {
 
           this.addToInventory("00x01", 1);
 
-          Momo.playSound(sound_hit, 1.0, 1.0, false);
+          Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
         }
 
         // Convert sticks to grass.
@@ -611,7 +611,7 @@ Player = new class {
 
           this.addToInventory("03x01", 1);
 
-          Momo.playSound(sound_hit, 1.0, 1.0, false);
+          Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
         }
 
         // Convert snowballs to grass.
@@ -619,7 +619,7 @@ Player = new class {
 
           this.addToInventory("04x01", 1);
 
-          Momo.playSound(sound_hit, 1.0, 1.0, false);
+          Momo.playSample(sound_hit, 1.0, 1.0, false, getUniqueIdentifier());
         }
       break;
 
@@ -634,12 +634,12 @@ Player = new class {
 
             this.removeFromInventory("02x01", 1);
 
-            Momo.playSound(sound_plant, 1.0, 1.0, false);
+            Momo.playSample(sound_plant, 1.0, 1.0, false, getUniqueIdentifier());
           }
         }
         else {
 
-          Momo.playSound(sound_beep, 1.0, 1.0, false);
+          Momo.playSample(sound_beep, 1.0, 1.0, false, getUniqueIdentifier());
         }
       break;
 
@@ -654,12 +654,12 @@ Player = new class {
 
             this.removeFromInventory("07x00", 1);
 
-            Momo.playSound(sound_plant, 1.0, 1.0, false);
+            Momo.playSample(sound_plant, 1.0, 1.0, false, getUniqueIdentifier());
           }
         }
         else {
 
-          Momo.playSound(sound_beep, 1.0, 1.0, false);
+          Momo.playSample(sound_beep, 1.0, 1.0, false, getUniqueIdentifier());
         }
       break;
 
@@ -674,12 +674,12 @@ Player = new class {
 
             this.removeFromInventory("00x01", 1);
 
-            Momo.playSound(sound_plant, 1.0, 1.0, false);
+            Momo.playSample(sound_plant, 1.0, 1.0, false, getUniqueIdentifier());
           }
         }
         else {
 
-          Momo.playSound(sound_beep, 1.0, 1.0, false);
+          Momo.playSample(sound_beep, 1.0, 1.0, false, getUniqueIdentifier());
         }
       break;
 
@@ -694,12 +694,12 @@ Player = new class {
 
             this.removeFromInventory("01x01", 1);
 
-            Momo.playSound(sound_plant, 1.0, 1.0, false);
+            Momo.playSample(sound_plant, 1.0, 1.0, false, getUniqueIdentifier());
           }
         }
         else {
 
-          Momo.playSound(sound_beep, 1.0, 1.0, false);
+          Momo.playSample(sound_beep, 1.0, 1.0, false, getUniqueIdentifier());
         }
       break;
 
@@ -714,12 +714,12 @@ Player = new class {
 
             this.removeFromInventory("03x01", 1);
 
-            Momo.playSound(sound_plant, 1.0, 1.0, false);
+            Momo.playSample(sound_plant, 1.0, 1.0, false, getUniqueIdentifier());
           }
         }
         else {
 
-          Momo.playSound(sound_beep, 1.0, 1.0, false);
+          Momo.playSample(sound_beep, 1.0, 1.0, false, getUniqueIdentifier());
         }
       break;
 
@@ -734,12 +734,12 @@ Player = new class {
 
             this.removeFromInventory("04x01", 1);
 
-            Momo.playSound(sound_plant, 1.0, 1.0, false);
+            Momo.playSample(sound_plant, 1.0, 1.0, false, getUniqueIdentifier());
           }
         }
         else {
 
-          Momo.playSound(sound_beep, 1.0, 1.0, false);
+          Momo.playSample(sound_beep, 1.0, 1.0, false, getUniqueIdentifier());
         }
       break;
 
@@ -749,7 +749,7 @@ Player = new class {
 
           secret_key_presses = 0;
 
-          Momo.playSound(sound_boom, 1.0, 1.0, false);
+          Momo.playSample(sound_boom, 1.0, 1.0, false, getUniqueIdentifier());
 
           for (let y = 0; y < NUMBER_OF_TILES_Y; ++y) {
 

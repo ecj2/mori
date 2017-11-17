@@ -14,6 +14,8 @@ function main() {
 
   Momo.setFrameRate(60);
 
+  Momo.installKeyboard();
+
   loadResources();
 
   Momo.resourcesLoaded(
@@ -58,7 +60,7 @@ function update() {
 
       won = true;
 
-      Momo.playSound(sound_power_up, 1.0, 1.0, false);
+      Momo.playSample(sound_power_up, 1.0, 1.0, false, getUniqueIdentifier());
 
       Player.upgrade();
 
@@ -120,18 +122,18 @@ function render() {
 
 function loadResources() {
 
-  image_tiles = Momo.loadImage("data/png/tiles.png");
+  image_tiles = Momo.loadBitmap("data/png/tiles.png");
 
   font_pixel = Momo.loadFont("data/ttf/font_pixel.ttf");
   font_japanese = Momo.loadFont("data/ttf/misaki_gothic.ttf");
 
-  sound_hit = Momo.loadSound("data/mp3/hit.mp3");
-  sound_blip = Momo.loadSound("data/mp3/blip.mp3");
-  sound_beep = Momo.loadSound("data/mp3/beep.mp3");
-  sound_grow = Momo.loadSound("data/mp3/grow.mp3");
-  sound_boom = Momo.loadSound("data/mp3/boom.mp3");
-  sound_plant = Momo.loadSound("data/mp3/plant.mp3");
-  sound_power_up = Momo.loadSound("data/mp3/power_up.mp3");
+  sound_hit = Momo.loadSample("data/mp3/hit.mp3");
+  sound_blip = Momo.loadSample("data/mp3/blip.mp3");
+  sound_beep = Momo.loadSample("data/mp3/beep.mp3");
+  sound_grow = Momo.loadSample("data/mp3/grow.mp3");
+  sound_boom = Momo.loadSample("data/mp3/boom.mp3");
+  sound_plant = Momo.loadSample("data/mp3/plant.mp3");
+  sound_power_up = Momo.loadSample("data/mp3/power_up.mp3");
 
   Player.spawn();
 

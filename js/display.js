@@ -15,7 +15,7 @@ Display = new class {
 
     if (this.show_text) {
 
-      if (Momo.isKeyPressed(Momo.KEY_X)) {
+      if (Momo.isKeyPressed("x")) {
 
         ++this.sequence;
 
@@ -36,7 +36,7 @@ Display = new class {
     for (let i = 0; i < 12; ++i) {
 
       // Display item bar background.
-      Momo.drawPartialImage(
+      Momo.drawClippedBitmap(
 
         image_tiles,
 
@@ -55,7 +55,7 @@ Display = new class {
     }
 
     // Display item highlight.
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -73,7 +73,7 @@ Display = new class {
     );
 
     // Draw action item.
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -91,7 +91,7 @@ Display = new class {
     );
 
     // Draw acorn item.
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -109,7 +109,7 @@ Display = new class {
     );
 
     // Draw mushroom item.
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -127,7 +127,7 @@ Display = new class {
     );
 
     // Draw bone item.
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -145,7 +145,7 @@ Display = new class {
     );
 
     // Draw flower item.
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -163,7 +163,7 @@ Display = new class {
     );
 
     // Draw stick item.
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -181,7 +181,7 @@ Display = new class {
     );
 
     // Draw snowball item.
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -226,7 +226,7 @@ Display = new class {
 
         CANVAS_H - TILE_SIZE + 46,
 
-        Momo.TEXT_ALIGN_RIGHT,
+        "right",
 
         item_count
       );
@@ -237,7 +237,7 @@ Display = new class {
       for (let i = 1; i < 11; ++i) {
 
         // Draw text box.
-        Momo.drawPartialImage(
+        Momo.drawClippedBitmap(
 
           image_tiles,
 
@@ -268,7 +268,7 @@ Display = new class {
 
         TILE_SIZE + 24,
 
-        Momo.TEXT_ALIGN_LEFT,
+        "left",
 
         this.text[this.sequence]
       );
@@ -287,7 +287,7 @@ Display = new class {
 
       17,
 
-      Momo.TEXT_ALIGN_LEFT,
+      "left",
 
       "Snow goal: " + number_of_snowballs + "%"
     );
@@ -305,7 +305,7 @@ Display = new class {
 
       16,
 
-      Momo.TEXT_ALIGN_LEFT,
+      "left",
 
       "Snow goal: " + number_of_snowballs + "%"
     );

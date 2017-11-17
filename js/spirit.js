@@ -114,7 +114,7 @@ class Spirit {
       return;
     }
 
-    Momo.drawPartialImage(
+    Momo.drawClippedBitmap(
 
       image_tiles,
 
@@ -244,7 +244,7 @@ class Spirit {
           // Kill this spirit.
           this.alive = false;
 
-          Momo.playSound(sound_boom, 1.0, 1.0, false);
+          Momo.playSample(sound_boom, 1.0, 1.0, false, getUniqueIdentifier());
 
           // Drop a bone.
           Map.setTile(this.getTileX(), this.getTileY(), "00x01t");

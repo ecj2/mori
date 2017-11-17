@@ -94,3 +94,23 @@ function getRandomNumber() {
 
   return Math.floor(Math.random() * 100);
 }
+
+let identifiers = [];
+
+function getUniqueIdentifier() {
+
+  // Get a random number.
+  let identifier = Math.abs(Math.random() * Number.MAX_SAFE_INTEGER | 0);
+
+  // Check if the identifier has already been used.
+  if (identifiers.indexOf(identifier) !== -1) {
+
+    // The identifier is not unique; try again.
+    return getUniqueIdentifier();
+  }
+
+  // The identifier is unique; add it to the array.
+  identifiers.push(identifier);
+
+  return identifier;
+}

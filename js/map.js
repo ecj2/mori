@@ -67,7 +67,7 @@ Map = new class {
             // Convert acorn to tree.
             this.tiles[x][y] = "05x00t";
 
-            Momo.playSound(sound_grow, 1.0, 1.0, false);
+            Momo.playSample(sound_grow, 1.0, 1.0, false, getUniqueIdentifier());
 
             this.ticks[x][y] = 300 + (60 * (getRandomNumber() % 6));
           }
@@ -107,7 +107,7 @@ Map = new class {
         let axis_y = this.tiles[x][y].substring(4, 5);
 
         // Draw grass beneath each tile.
-        Momo.drawPartialImage(
+        Momo.drawClippedBitmap(
 
           image_tiles,
 
@@ -125,7 +125,7 @@ Map = new class {
         );
 
         // Draw each tile.
-        Momo.drawPartialImage(
+        Momo.drawClippedBitmap(
 
           image_tiles,
 
